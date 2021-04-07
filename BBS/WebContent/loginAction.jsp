@@ -18,24 +18,27 @@
 	<%
 		String userID = null;
 	if( session.getAttribute("userID") != null) {
-		userID = (String) session.getAttribute("userID");
-	} 
-	if (userID != null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 로그인이 되어있습니다.')");
 		script.println("location.href = 'main.jsp'");
 		script.println("</script>");
-	}
+	} else {
 	
 	UserDAO userDAO = new UserDAO();
 	int result = userDAO.login(user.getUserID(), user.getUserPassword());
 	if (result == 1) {
-		session.setAttribute("userID", user.getUserID());
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("location.href = 'main.jsp'");
-		script.println("</script>");
+		session.setAttribute("userID", user.getUserID()); //여기서 세션에 담아준다. 로그인 정보가 맞으면
+		System.out.println("세션에 담긴 아이디" + session.getAttribute("userID"));
+		%>
+		
+		<script>
+		alert('<%=session.getAttribute("userID")%>')
+		location.href = 'main.jsp';
+		</script>
+		
+		<%  
+
 	} else if (result == 0) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -55,7 +58,7 @@
 		script.println("history.back()");
 		script.println("</script>");
 	}
+}
 	%>
-
 </body>
 </html>

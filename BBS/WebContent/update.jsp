@@ -8,9 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" , initial-scale="1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--반응형 웹 만들때 사용. 화면 크기에 따라 바뀜-->
 <link rel="stylesheet" href="css/bootstrap.css">
+<!-- 부트스트랩 스타일 시트 가져와서 사용하는 거  -->
 <title>JSP 게시판 웹 사이트</title>
 </head>
 <body>
